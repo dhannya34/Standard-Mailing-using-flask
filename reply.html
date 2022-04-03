@@ -1,0 +1,25 @@
+<html>
+	<body>
+		<form method="post" action="{{url_for('replyAction')}}">
+		<table>
+			<tr>
+				
+				<td>Reciever ID</td>
+				<td><input type="text" name="recieverid" value="{{data}}"></td>
+			</tr>
+			<tr>
+				<td>Subject</td>
+				<td><input type=""text" name="subject"></td>
+			</tr>
+			<tr>
+				<td>Message</td>
+				<td><textarea name="message" rows="10" cols="20"></textarea></td>
+			</tr>
+				
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Submit"></td>
+			</tr>
+		</table>
+	</body>
+</html>

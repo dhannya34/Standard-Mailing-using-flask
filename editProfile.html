@@ -1,0 +1,56 @@
+<html>
+	<body>
+		<form method="post" action="{{url_for('editProfileAction')}}">
+		<table>
+			{% for v in x %}
+			<tr>
+				<td>Name</td>
+				<td><input type="text" name="name" value="{{v.name}}"></td>
+			</tr>
+			<tr>
+				<td>Gender</td>
+				<td>{% if v.gender == 'male' %}
+				<input type="radio" name="gender" value="male" checked="true">MALE
+				<input type="radio" name="gender" value="female">FEMALE
+				{% else %}
+				<input type="radio" name="gender" value="male">MALE
+				<input type="radio" name="gender" value="female" checked="true">FEMALE</td>
+				{% endif %}
+				
+			</tr>
+			<tr>
+				<td>Dob</td>
+				<td><input type="date" name="dob" value="{{v.dob}}"></td>
+			</tr>
+			<tr>
+				<td>Phone</td>
+				<td><input type="text" name="phone" value="{{v.phone}}"></td>
+			</tr>
+			<tr>
+				<td>Username</td>
+				<td><input type="text" name="username" value="{{z}}" id="username">@mymail.com</td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td><input type="password" name="password" value="{{v.password}}"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Update"></td>
+			</tr>
+			{% endfor %}
+		</table>
+	</body>
+{% if get_flashed_messages() %}
+{% for msg in get_flashed_messages() %}
+	<script>
+		alert('{{msg}}')
+	</script>
+{% endfor %}
+{% endif %}
+</html>
+
+
+
+
+

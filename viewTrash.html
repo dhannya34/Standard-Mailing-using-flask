@@ -1,0 +1,25 @@
+<html>
+	<body>
+		<table>
+			<tr>
+				<td>Message</td>
+				<td>Subject</td>
+				
+				<td>Date</td>
+				<td>Time</td>
+			</tr>
+			{% for v in data %}
+			<tr>
+				<td>{{v.message}}</td>
+				<td>{{v.subject}}</td>
+				<td>{{v.date}}</td>
+				<td>{{v.time}}</td>
+				
+				<td><a href="{{url_for('deletet',uid=v.messageid)}}">Delete</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</body>
+</html>
+				
+				

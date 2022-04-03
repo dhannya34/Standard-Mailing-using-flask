@@ -1,0 +1,67 @@
+<html>
+<script src="/static/jquery-1.8.3.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("#username").change(function(){
+			var username=$("#username").val();
+			$.ajax({
+				url:"{{url_for('checkUsername')}}",
+				data:{'username':username},
+				success:function(data){
+					if(data.valid=="exists")
+					{
+						alert("Username already exists!!");
+						$("#username").val('');
+					}
+				}
+			});
+		});
+	});
+</script>
+	<body>
+		<form method="post" action="{{url_for('registerAction')}}">
+			<table>
+				<tr>
+					<td>Name:</td>
+					<td><input type="text" name="name"></td>
+				</tr>
+				<tr>
+					<td>Gender:</td>
+					<td><input type="radio" name="gender" value="male">MALE
+					   <input type="radio" name="gender" value="female">FEMALE	
+					</td>
+				</tr>
+				<tr>
+					<td>Dob:</td>
+					<td><input type="date" name="dob"></td>
+				</tr>
+				
+				
+				<tr>
+					<td>Phone:</td>
+					<td><input type="text" name="phone"></td>
+				</tr>
+				<tr>
+					<td>Username:</td>
+					<td><input type="text" name="username" id="username">@mymail.com></td>
+						
+				</tr>
+				<tr>
+					<td>Password:</td>
+					<td><input type="password" name="password"></td>
+				</tr>
+
+				
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Register"></td>
+				</tr>
+			</table>
+		</form>
+	</body>
+{% if msg %}
+		<script>
+			alert('{{msg}}')
+		</script>
+{% endif %}
+</html>

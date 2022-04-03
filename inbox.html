@@ -1,0 +1,33 @@
+<html>
+	<body>
+		<form method="post" action="{{url_for('inboxAction')}}">
+		<table>
+			<tr>
+				<td>Sender(Username)</td>
+				<td>Subject</td>
+				<td>Message</td>
+				<td>Date</td>
+				<td>Time</td>
+			</tr>
+			{% for v in data %}
+			<tr>
+				<td>{{username}}</td>
+				<td>{{v.subject}}</td>
+				<td>{{v.message}}</td>
+				<td>{{v.date}}</td>
+				<td>{{v.time}}</td>
+				<td><input type="checkbox" name="checkbox" value="{{v.id}}"></td>
+				<td><a href="{{url_for('forward',uid=v.id)}}">Forward</td>
+				<td><a href="{{url_for('reply',uid=v.id)}}">Reply</td>
+				
+			</tr>
+			{% endfor %}
+			<tr>
+				<td><input type="submit" value="Move to trash"></td>
+			</tr>
+		</table>
+		</form>
+	</body>
+</html>
+
+				

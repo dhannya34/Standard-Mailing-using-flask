@@ -1,0 +1,44 @@
+<html>
+<script src="/static/jquery-1.8.3.min.js"></script>
+<script>
+	$(document).ready(function(){
+					$("#recieverid").change(function(){
+										var recieverid=$("#recieverid").val()
+											$.ajax({
+												url:"{{url_for('recieveridcheck')}}",
+												data:{'recieverid':recieverid},
+												success:function(data){
+													if(data.valid!="exists")
+														{
+														alert("Invalid Id!!");
+														$("recieverid").val('');
+														}
+											}
+									});
+								});
+						});
+		</script>
+	<body>
+		<form method="post" action="{{url_for('forwardAction')}}">
+			<table>
+			<tr>
+				{% for v in data %}
+				<td>Reciever ID</td>
+				<td><input type="text" name="recieverid" id="recieverid"></td>
+			</tr>
+			<tr>
+				<td>Subject</td>
+				<td><input type=""text" name="subject" value="{{v.subject}}"</td>
+			</tr>
+			<tr>
+				<td>Message</td>
+				<td><textarea name="message" rows="10" cols="20">{{v.message}}</textarea></td>
+			</tr>
+				{% endfor %}
+			<tr>
+				<td></td>
+				<td><input type="submit" value="Submit"></td>
+			</tr>
+		</table>
+	</body>
+</html>
